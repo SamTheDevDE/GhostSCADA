@@ -4,13 +4,13 @@ local function print(message) term.write(tostring(message)) end
 local opts = { ... }
 local mode, app
 
-local function red() term.setTextColor(colors.red) end
-local function orange() term.setTextColor(colors.orange) end
-local function yellow() term.setTextColor(colors.yellow) end
-local function green() term.setTextColor(colors.green) end
-local function blue() term.setTextColor(colors.blue) end
+local function red() term.setTextColor(colors.white) end
+local function orange() term.setTextColor(colors.white) end
+local function yellow() term.setTextColor(colors.white) end
+local function green() term.setTextColor(colors.white) end
+local function blue() term.setTextColor(colors.white) end
 local function white() term.setTextColor(colors.white) end
-local function lgray() term.setTextColor(colors.lightGray) end
+local function lgray() term.setTextColor(colors.white) end
 
 -- get command line option in list
 local function get_opt(opt, options)
@@ -123,7 +123,7 @@ end
 
 -- get and validate command line options
 
-println("-- CC Mekanism SCADA Install Manager (Off-Line) --")
+println("-- GhostScada Install Manager (Off-Line) --")
 
 if #opts == 0 or opts[1] == "help" then
     println("usage: ccmsim <mode>")

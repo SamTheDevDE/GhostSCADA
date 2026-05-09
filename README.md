@@ -1,12 +1,13 @@
-# cc-mek-scada
-Configurable ComputerCraft SCADA system for multi-reactor control of Mekanism fission reactors with a GUI, automatic safety features, waste processing control, and more! 
+# GhostScada
+
+Configurable ComputerCraft SCADA system for multi-reactor control of Mekanism fission reactors with a GUI, automatic safety features, waste processing control, and more!
 
 ![GitHub](https://img.shields.io/github/license/MikaylaFischler/cc-mek-scada)
 ![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/MikaylaFischler/cc-mek-scada?include_prereleases)
 ![GitHub Workflow Status (with branch)](https://img.shields.io/github/actions/workflow/status/MikaylaFischler/cc-mek-scada/check.yml?branch=main&label=main)
 ![GitHub Workflow Status (with branch)](https://img.shields.io/github/actions/workflow/status/MikaylaFischler/cc-mek-scada/check.yml?branch=devel&label=devel)
 
-### Join [the Discord](https://discord.gg/R9NSCkhcwt)!
+### Join [the Discord](https://discord.gg/R9NSCkhcwt)
 
 ![Discord](https://img.shields.io/discord/1129075839288496259?logo=Discord&logoColor=white&label=discord)
 
@@ -14,13 +15,11 @@ Configurable ComputerCraft SCADA system for multi-reactor control of Mekanism fi
 
 ![Installer](https://img.shields.io/endpoint?url=https%3A%2F%2Fmikaylafischler.github.io%2Fcc-mek-scada%2Finstaller.json)
 
-
 ![Bootloader](https://img.shields.io/endpoint?url=https%3A%2F%2Fmikaylafischler.github.io%2Fcc-mek-scada%2Fbootloader.json)
 ![Comms](https://img.shields.io/endpoint?url=https%3A%2F%2Fmikaylafischler.github.io%2Fcc-mek-scada%2Fcommon.json)
 ![Comms](https://img.shields.io/endpoint?url=https%3A%2F%2Fmikaylafischler.github.io%2Fcc-mek-scada%2Fcomms.json)
 ![Graphics](https://img.shields.io/endpoint?url=https%3A%2F%2Fmikaylafischler.github.io%2Fcc-mek-scada%2Fgraphics.json)
 ![Lockbox](https://img.shields.io/endpoint?url=https%3A%2F%2Fmikaylafischler.github.io%2Fcc-mek-scada%2Flockbox.json)
-
 
 ![Reactor PLC](https://img.shields.io/endpoint?url=https%3A%2F%2Fmikaylafischler.github.io%2Fcc-mek-scada%2Freactor-plc.json)
 ![RTU](https://img.shields.io/endpoint?url=https%3A%2F%2Fmikaylafischler.github.io%2Fcc-mek-scada%2Frtu.json)
@@ -31,10 +30,12 @@ Configurable ComputerCraft SCADA system for multi-reactor control of Mekanism fi
 ## Requirements
 
 Mod Requirements:
+
 - CC: Tweaked
 - Mekanism v10.1+
 
 Mod Recommendations:
+
 - Advanced Peripherals (adds the capability to detect environmental radiation levels)
 - Immersive Engineering (provides bundled redstone, though any mod containing bundled redstone will do)
 
@@ -43,17 +44,18 @@ v10.1+ is required due to the complete support of CC:Tweaked added in Mekanism v
 ## Installation
 
 You can install this on a ComputerCraft computer using either:
-* `wget https://raw.githubusercontent.com/MikaylaFischler/cc-mek-scada/main/ccmsi.lua`
-* `pastebin get sqUN6VUb ccmsi.lua`
-* Off-line (when HTTP is disabled) installation via [release bundles](https://github.com/MikaylaFischler/cc-mek-scada/wiki/Alternative-Installation-Strategies#release-bundles)
+- `wget https://raw.githubusercontent.com/MikaylaFischler/cc-mek-scada/main/ccmsi.lua`
+- `pastebin get sqUN6VUb ccmsi.lua`
+- Off-line (when HTTP is disabled) installation via [release bundles](https://github.com/MikaylaFischler/cc-mek-scada/wiki/Alternative-Installation-Strategies#release-bundles)
 
 ## Contributing
 
-Please reach out to me via Discord or email (or GitHub in some way) if you are thinking of making any contributions at this time. I started this project as a challenge for myself and have been enjoying having something I can work on in my own way. 
+Please reach out to me via Discord or email (or GitHub in some way) if you are thinking of making any contributions at this time. I started this project as a challenge for myself and have been enjoying having something I can work on in my own way.
 
 Once this is out of beta I will be more open to contributions, but for now I am hoping to keep them to a minimum as the remaining challenges are ones I am looking forward to solving.
 
 ## [SCADA](https://en.wikipedia.org/wiki/SCADA)
+>
 > Supervisory control and data acquisition (SCADA) is a control system architecture comprising computers, networked data communications and graphical user interfaces for high-level supervision of machines and processes. It also covers sensors and other devices, such as programmable logic controllers, which interface with process plant or machinery.
 
 This project implements concepts of a SCADA system in ComputerCraft (because why not? ..okay don't answer that). I recommend reviewing that linked wikipedia page on SCADA if you *want* to understand the concepts used here.
@@ -61,6 +63,7 @@ This project implements concepts of a SCADA system in ComputerCraft (because why
 ![Architecture](https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Functional_levels_of_a_Distributed_Control_System.svg/1000px-Functional_levels_of_a_Distributed_Control_System.svg.png)
 
 SCADA and industrial automation terminology is used throughout the project, such as:
+
 - Supervisory Computer: Gathers data and controls the process
 - Coordinating Computer: Used as the HMI component, user requests high-level processing operations
 - RTU: Remote Terminal Unit
@@ -91,6 +94,7 @@ There can and should only be one of these per reactor. A single Advanced Compute
 ## Communications
 
 A vaguely-modbus [modbus](https://en.wikipedia.org/wiki/Modbus) communication protocol is used for communication with RTUs. Useful terminology for you to know:
+
 - Discrete Inputs: Single Bit Read-Only (digital inputs)
 - Coils: Single Bit Read/Write (digital I/O)
 - Input Registers: Multi-Byte Read-Only (analog inputs)
@@ -101,3 +105,20 @@ A vaguely-modbus [modbus](https://en.wikipedia.org/wiki/Modbus) communication pr
 HMAC message authentication is available as a configuration option to prevent replay attacks and generally prevent control or false data reporting within a system's network. This is done utilizing the [lua-lockbox](https://github.com/somesocks/lua-lockbox) project.
 
 The other, simpler security feature is to enforce a maximum authorized transmission range, which is also a configurable feature on each device.
+
+## Copyright
+
+GhostScada - ComputerCraft SCADA System for Mekanism
+
+Copyright (c) 2023 - 2024 Mikayla Fischler
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
+associated documentation files (the "Software"), to deal in the Software without restriction,
+including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
+LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

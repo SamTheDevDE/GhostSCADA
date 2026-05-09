@@ -1,5 +1,5 @@
 --[[
-CC-MEK-SCADA Installer Utility
+GhostScada Installer Utility
 
 Copyright (c) 2023 - 2024 Mikayla Fischler
 
@@ -76,14 +76,14 @@ local opts = { ... }
 local mode, app, target
 local install_manifest = manifest_path.."main/install_manifest.json"
 
-local function red() term.setTextColor(colors.red) end
-local function orange() term.setTextColor(colors.orange) end
-local function yellow() term.setTextColor(colors.yellow) end
-local function green() term.setTextColor(colors.green) end
-local function cyan() term.setTextColor(colors.cyan) end
-local function blue() term.setTextColor(colors.blue) end
+local function red() term.setTextColor(colors.white) end
+local function orange() term.setTextColor(colors.white) end
+local function yellow() term.setTextColor(colors.white) end
+local function green() term.setTextColor(colors.white) end
+local function cyan() term.setTextColor(colors.white) end
+local function blue() term.setTextColor(colors.white) end
 local function white() term.setTextColor(colors.white) end
-local function lgray() term.setTextColor(colors.lightGray) end
+local function lgray() term.setTextColor(colors.white) end
 
 -- get command line option in list
 local function get_opt(opt, options)
@@ -279,8 +279,8 @@ end
 
 -- get and validate command line options
 
-if _is_pkt_env then println("- SCADA Installer "..CCMSI_VERSION.." -")
-else println("-- CC Mekanism SCADA Installer "..CCMSI_VERSION.." --") end
+if _is_pkt_env then println("- GhostScada Installer "..CCMSI_VERSION.." -")
+else println("-- GhostScada Installer "..CCMSI_VERSION.." --") end
 
 if #opts == 0 or opts[1] == "help" then
     println("usage: ccmsi <mode> <app> <branch>")
@@ -378,7 +378,7 @@ if mode == "check" then
 
     -- list all versions
     for key, value in pairs(manifest.versions) do
-        term.setTextColor(colors.purple)
+        term.setTextColor(colors.white)
         local tag = string.format("%-14s", "["..key.."]")
         if not _is_pkt_env then print(tag) end
         if key == "installer" or (local_ok and (local_manifest.versions[key] ~= nil)) then

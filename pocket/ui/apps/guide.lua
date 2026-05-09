@@ -97,7 +97,7 @@ local function new_view(root)
 
         local sect_construct_data = { app, page_div, panes, doc_map, search_db, btn_fg_bg, btn_active }
 
-        TextBox{parent=home,y=1,text="cc-mek-scada Guide",alignment=ALIGN.CENTER}
+        TextBox{parent=home,y=1,text="GhostScada Guide",alignment=ALIGN.CENTER}
 
         PushButton{parent=home,y=3,text="Search              >",fg_bg=btn_fg_bg,active_fg_bg=btn_active,callback=search_page.nav_to}
         PushButton{parent=home,y=5,text="System Usage        >",fg_bg=btn_fg_bg,active_fg_bg=btn_active,callback=use_page.nav_to}

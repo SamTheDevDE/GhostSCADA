@@ -62,7 +62,7 @@ local function draw_computer_crash(exit)
     TextBox{parent=warning,x=6,y=3,text=" \n \x83",width=1,fg_bg=core.cpair(colors.yellow,colors.white)}
 
     TextBox{parent=display,x=13,y=2,text="Critical Software Fault Encountered",alignment=core.ALIGN.CENTER,fg_bg=core.cpair(colors.yellow,colors._INHERIT)}
-    TextBox{parent=display,x=15,y=4,text="Please consider reporting this on the cc-mek-scada Discord or GitHub.",width=36,alignment=core.ALIGN.CENTER}
+    TextBox{parent=display,x=15,y=4,text="Please consider reporting this on the GhostScada Discord or GitHub.",width=36,alignment=core.ALIGN.CENTER}
     TextBox{parent=display,x=14,y=7,text="refer to the log file for more info",alignment=core.ALIGN.CENTER,fg_bg=core.cpair(colors.gray,colors._INHERIT)}
 
     local box = Rectangle{parent=display,x=2,y=9,width=display.get_width()-2,height=8,border=core.border(1,colors.gray,true),thin=true,fg_bg=core.cpair(colors.black,colors.white)}
@@ -96,7 +96,7 @@ local function draw_pocket_crash(exit)
     TextBox{parent=warning,x=4,y=3,text="\x85",width=1,fg_bg=core.cpair(colors.lightGray,colors.yellow)}
 
     TextBox{parent=display,x=10,y=2,text=" Critical Software Fault",width=16,alignment=core.ALIGN.CENTER,fg_bg=core.cpair(colors.yellow,colors._INHERIT)}
-    TextBox{parent=display,x=2,y=5,text="Consider reporting this on the cc-mek-scada Discord or GitHub.",width=36,alignment=core.ALIGN.CENTER}
+    TextBox{parent=display,x=2,y=5,text="Consider reporting this on the GhostScada Discord or GitHub.",width=36,alignment=core.ALIGN.CENTER}
 
     local box = Rectangle{parent=display,y=9,width=display.get_width(),height=8,fg_bg=core.cpair(colors.black,colors.white)}
     TextBox{parent=box,text=err}

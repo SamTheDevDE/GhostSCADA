@@ -45,16 +45,16 @@ local configurator = {}
 
 local style = {}
 
-style.root          = cpair(colors.black, colors.lightGray)
-style.header        = cpair(colors.white, colors.gray)
+style.root          = cpair(colors.white, colors.black)
+style.header        = cpair(colors.white, colors.black)
 
 style.colors        = themes.smooth_stone.colors
 
-style.bw_fg_bg      = cpair(colors.black, colors.white)
-style.g_lg_fg_bg    = cpair(colors.gray, colors.lightGray)
+style.bw_fg_bg      = cpair(colors.white, colors.black)
+style.g_lg_fg_bg    = cpair(colors.white, colors.black)
 style.nav_fg_bg     = style.bw_fg_bg
-style.btn_act_fg_bg = cpair(colors.white, colors.gray)
-style.btn_dis_fg_bg = cpair(colors.lightGray,colors.white)
+style.btn_act_fg_bg = cpair(colors.white, colors.black)
+style.btn_dis_fg_bg = cpair(colors.white, colors.black)
 
 ---@class _crd_cfg_tool_ctl
 local tool_ctl = {
