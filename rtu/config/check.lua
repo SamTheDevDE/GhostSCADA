@@ -84,7 +84,7 @@ local function handle_packet(packet)
                 elseif est_ack == ESTABLISH_ACK.DENY then
                     error_msg = "error: supervisor connection denied"
                 elseif est_ack == ESTABLISH_ACK.BAD_VERSION then
-                    error_msg = "RTU gateway comms version does not match supervisor comms version, make sure both devices are up-to-date (ccmsi update)"
+                    error_msg = "RTU gateway comms version does not match supervisor comms version, make sure both devices are up-to-date (ghst update)"
                 else
                     error_msg = "error: invalid reply from supervisor"
                 end

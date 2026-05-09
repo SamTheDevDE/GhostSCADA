@@ -15,11 +15,11 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ]]--
 
-local CCMSI_VERSION = "v1.21"
+local GHST_VERSION = "v1.21"
 
 local install_dir = "/.install-cache"
-local manifest_path = "https://mikaylafischler.github.io/cc-mek-scada/manifests/"
-local repo_path = "http://raw.githubusercontent.com/MikaylaFischler/cc-mek-scada/"
+local manifest_path = "https://github.samthedev.de/manifests/"
+local repo_path = "https://raw.githubusercontent.com/SamTheDevDE/GhostSCADA/"
 
 ---@diagnostic disable-next-line: undefined-global
 local _is_pkt_env = pocket -- luacheck: ignore pocket
@@ -259,7 +259,7 @@ local function clean(manifest)
     local tree = gen_tree(manifest, log)
 
     table.insert(tree, "install_manifest.json")
-    table.insert(tree, "ccmsi.lua")
+    table.insert(tree, "ghst.lua")
 
     local ls = fs.list("/")
     for _, val in pairs(ls) do
@@ -279,11 +279,11 @@ end
 
 -- get and validate command line options
 
-if _is_pkt_env then println("- GhostScada Installer "..CCMSI_VERSION.." -")
-else println("-- GhostScada Installer "..CCMSI_VERSION.." --") end
+if _is_pkt_env then println("- GhostScada Installer "..GHST_VERSION.." -")
+else println("-- GhostScada Installer "..GHST_VERSION.." --") end
 
 if #opts == 0 or opts[1] == "help" then
-    println("usage: ccmsi <mode> <app> <branch>")
+    println("usage: ghst <mode> <app> <branch>")
     if _is_pkt_env then
     yellow();println("<mode>");lgray()
     println(" check - check latest")
@@ -304,7 +304,7 @@ if #opts == 0 or opts[1] == "help" then
     lgray()
     println(" check       - check latest versions available")
     yellow()
-    println("               ccmsi check <branch> for target")
+    println("               ghst check <branch> for target")
     lgray()
     println(" install     - fresh install")
     println(" update      - update files")
@@ -315,7 +315,7 @@ if #opts == 0 or opts[1] == "help" then
     println(" supervisor  - supervisor server application")
     println(" coordinator - coordinator application")
     println(" pocket      - pocket application")
-    println(" installer   - ccmsi installer (update only)")
+    println(" installer   - ghst installer (update only)")
     white();println("<branch>")
     lgray();println(" main (default) | devel");white()
     end
@@ -371,9 +371,9 @@ if mode == "check" then
     local local_ok, local_manifest = read_local_manifest()
     if not local_ok then
         yellow();println("failed to load local installation information");white()
-        local_manifest = { versions = { installer = CCMSI_VERSION } }
+        local_manifest = { versions = { installer = GHST_VERSION } }
     else
-        local_manifest.versions.installer = CCMSI_VERSION
+        local_manifest.versions.installer = GHST_VERSION
     end
 
     -- list all versions
@@ -395,7 +395,7 @@ if mode == "check" then
     end
 
     if manifest.versions.installer ~= local_manifest.versions.installer and not _is_pkt_env then
-        yellow();println("\nA different version of the installer is available, it is recommended to update (use 'ccmsi update installer').");white()
+        yellow();println("\nA different version of the installer is available, it is recommended to update (use 'ghst update installer').");white()
     end
 elseif mode == "install" or mode == "update" then
     local ok, r_manifest, l_manifest
@@ -434,11 +434,11 @@ elseif mode == "install" or mode == "update" then
         end
     end
 
-    if r_manifest.versions.installer ~= CCMSI_VERSION then
+    if r_manifest.versions.installer ~= GHST_VERSION then
         if not update_installer then yellow();println("A different version of the installer is available, it is recommended to update to it.");white() end
         if update_installer or ask_y_n("Would you like to update now", true) then
-            lgray();println("GET ccmsi.lua")
-            local dl, err = http.get(repo_path.."ccmsi.lua")
+            lgray();println("GET ghst.lua")
+            local dl, err = http.get(repo_path.."ghst.lua")
 
             if dl == nil then
                 red();println("HTTP Error: "..err)

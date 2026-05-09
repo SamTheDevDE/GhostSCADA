@@ -81,7 +81,7 @@ local function handle_packet(packet)
                 elseif est_ack == ESTABLISH_ACK.COLLISION then
                     error_msg = "another reactor PLC is connected with this reactor unit ID"
                 elseif est_ack == ESTABLISH_ACK.BAD_VERSION then
-                    error_msg = "reactor PLC comms version does not match supervisor comms version, make sure both devices are up-to-date (ccmsi update)"
+                    error_msg = "reactor PLC comms version does not match supervisor comms version, make sure both devices are up-to-date (ghst update)"
                 else
                     error_msg = "error: invalid reply from supervisor"
                 end

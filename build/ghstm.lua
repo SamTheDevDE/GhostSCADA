@@ -103,7 +103,7 @@ local function clean(manifest)
     local tree = gen_tree(manifest, log)
 
     table.insert(tree, "install_manifest.json")
-    table.insert(tree, "ccmsim.lua")
+    table.insert(tree, "ghstm.lua")
 
     local ls = fs.list("/")
     for _, val in pairs(ls) do
@@ -126,7 +126,7 @@ end
 println("-- GhostScada Install Manager (Off-Line) --")
 
 if #opts == 0 or opts[1] == "help" then
-    println("usage: ccmsim <mode>")
+    println("usage: ghstm <mode>")
     println("<mode>")
     lgray()
     println(" check     - check your installed versions")
@@ -227,8 +227,8 @@ elseif mode == "update-rm" or mode == "uninstall" then
         fs.delete("install_manifest.json")
         println("deleted install_manifest.json")
 
-        fs.delete("ccmsim.lua")
-        println("deleted ccmsim.lua")
+        fs.delete("ghstm.lua")
+        println("deleted ghstm.lua")
     end
 
     green();println("Done!")

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Create zips to attach to GitHub releases.
-# These can be extracted onto a computer and will include all files CCMSI would otherwise install.
+# These can be extracted onto a computer and will include all files GHST would otherwise install.
 
 tag=$(git describe --tags)
 apps=(coordinator pocket reactor-plc rtu supervisor)

@@ -130,9 +130,9 @@ if not os.path.exists("./BUNDLE"):
     os.makedirs("./BUNDLE")
 
 # get offline installer
-ccmsim_file = open("./build/ccmsim.lua", "r")
-ccmsim_script = ccmsim_file.read()
-ccmsim_file.close()
+ghstm_file = open("./build/ghstm.lua", "r")
+ghstm_script = ghstm_file.read()
+ghstm_file.close()
 
 # create dependency bundled file
 dep_file = "common_" + build + ".lua"
@@ -182,7 +182,7 @@ for app in [ "reactor-plc", "rtu", "supervisor", "coordinator", "pocket" ]:
     body_a = body_a + f"""
 -- install manifest JSON and offline installer
 local install_manifest = "{base64.b64encode(bytes(install_manifest, 'UTF-8')).decode('ASCII')}"
-local ccmsi_offline = "{base64.b64encode(bytes(ccmsim_script, 'UTF-8')).decode('ASCII')}"
+local ghstm_offline = "{base64.b64encode(bytes(ghstm_script, 'UTF-8')).decode('ASCII')}"
 
 local function red() term.setTextColor(colors.red) end
 local function green() term.setTextColor(colors.green) end
